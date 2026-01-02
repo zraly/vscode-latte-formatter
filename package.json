@@ -2,7 +2,7 @@
   "name": "latte-formatter",
   "displayName": "Latte Formatter",
   "description": "Vibe coded Code formatter for Nette Latte templates. Formats HTML while preserving Latte syntax.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "zraly",
   "author": {
     "name": "Jiří Zralý"
