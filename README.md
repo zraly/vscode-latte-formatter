@@ -41,7 +41,7 @@ Add to your `settings.json`:
 {
   "editor.formatOnSave": true,
   "[latte]": {
-    "editor.defaultFormatter": "medhi.latte-formatter"
+    "editor.defaultFormatter": "zraly.latte-formatter"
   }
 }
 ```
