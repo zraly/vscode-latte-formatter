@@ -1,0 +1,65 @@
+{
+  "name": "latte-formatter",
+  "displayName": "Latte Formatter",
+  "description": "Vibe coded Code formatter for Nette Latte templates. Formats HTML while preserving Latte syntax.",
+  "version": "1.0.0",
+  "publisher": "zraly",
+  "author": {
+    "name": "Jiří Zralý"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zraly/vscode-latte-formatter"
+  },
+  "bugs": {
+    "url": "https://github.com/zraly/vscode-latte-formatter/issues"
+  },
+  "homepage": "https://github.com/zraly/vscode-latte-formatter#readme",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Formatters"
+  ],
+  "keywords": [
+    "latte",
+    "nette",
+    "formatter",
+    "template",
+    "php"
+  ],
+  "activationEvents": [
+    "onLanguage:latte"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "latte",
+        "aliases": [
+          "Latte",
+          "latte"
+        ],
+        "extensions": [
+          ".latte"
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^16.x",
+    "@types/vscode": "^1.70.0",
+    "typescript": "^4.7.4"
+  }
+}
