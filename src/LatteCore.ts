@@ -41,13 +41,25 @@ export class LatteCore {
 
             maskMap.set(placeholderId, match);
 
-            // Check context: Are we inside quotes?
+            // Check context: Are we inside quotes or inside an HTML tag declaration?
             const prefix = text.slice(0, offset);
             const insideDouble = (prefix.match(/"/g) || []).length % 2 === 1;
             const insideSingle = (prefix.match(/'/g) || []).length % 2 === 1;
 
             if (insideDouble || insideSingle) {
                 // Inside attribute or string -> Use opaque mask always
+                return placeholderId;
+            }
+
+            // Check if we're inside an HTML tag declaration (between < and >)
+            // First, remove Latte tags from prefix to avoid false positives from -> in PHP code
+            const prefixWithoutLatte = prefix.replace(/{(?:[^{}]|{[^{}]*})*}/g, '');
+            const lastOpenBracket = prefixWithoutLatte.lastIndexOf('<');
+            const lastCloseBracket = prefixWithoutLatte.lastIndexOf('>');
+            const insideHtmlTag = lastOpenBracket > lastCloseBracket;
+
+            if (insideHtmlTag) {
+                // Inside HTML tag declaration -> Use opaque mask to avoid invalid HTML
                 return placeholderId;
             }
 
